@@ -8,17 +8,23 @@ function addNewEntryButton(entryArray) {
 
 function addSpeedDialBookmark(bookmark, entryArray) {
 	var entry = $('<div id="' + bookmark.id + '" class="entry">' +
-					'<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '">' +
-						'<div class="image"></div>' +
-						'<table class="details"><tbody><tr>' +
-							'<td class="edit" title="Edit"><span class="foundicon-edit"></span></td>' +
-							'<td class="title">' + bookmark.title + '</td>' +
-							'<td class="remove" title="Remove"><span class="foundicon-remove"></span></td></tr></tbody>' +
-						'</table>' +
-					'</a>' +
-				'</div>');
+	'<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '">' +
+	'<div class="image"></div>' +
+	'<table class="details"><tbody><tr>' +
+	'<td class="edit" title="Edit"><span class="foundicon-edit"></span></td>' +
+	'<td class="reload" title="Reload"><span class="foundicon-edit"></span></td>' +
+	'<td class="title">' + bookmark.title + '</td>' +
+	'<td class="remove" title="Remove"><span class="foundicon-remove"></span></td></tr></tbody>' +
+	'</table>' +
+	'</a>' +
+	'</div>');
 
-	entry.find(".image").css("background-image", "url(" + getThumbnailUrl(bookmark) + ")");
+
+	//alert(localStorage.getItem("custom_icon_data"+bookmark.id));
+
+	if (localStorage.getItem("custom_icon_data"+bookmark.url) != null) {
+		entry.find(".image").css("background-image", "url(" + localStorage.getItem("custom_icon_data"+bookmark.url) + ")");
+	}
 	entry.find(".edit").on("click", function(event) {
 		event.preventDefault();
 		showBookmarkEntryForm("Edit Bookmark: " + bookmark.title, bookmark.title, bookmark.url, bookmark.id);
@@ -28,6 +34,37 @@ function addSpeedDialBookmark(bookmark, entryArray) {
 		if (confirm("Are you sure you want to remove this bookmark?")) {
 			removeBookmark(bookmark);
 		}
+	});
+
+	entry.find(".reload").on("click", function (event) {
+		event.preventDefault();
+		chrome.tabs.create({url: bookmark.url}, function (tab) {
+				chrome.tabs.onUpdated.addListener(function(tabId , info) {
+					if (tab.id == tabId && info.status == "complete") {
+						chrome.tabs.captureVisibleTab(
+							null,
+							{},
+							function (dataUrl) {
+								//alert(bookmark.url);
+								localStorage.setItem("custom_icon_data" + bookmark.url, dataUrl);
+								//localStorage.setItem('ImgStorage',dataUrl);
+								//entry.find(".image").css("background-image", "url(" + localStorage.getItem('ImgStorage')
+								// + ")"); entry.find(".image").css("background-image", "url(" +
+								// getThumbnailUrlFromLocalStorage(bookmark, dataUrl) + ")");
+
+								//sendResponse({imgSrc:dataUrl});
+							}
+						);
+
+					}
+				});
+				//chrome.tabs.update(tab.id, {}, function (tab) {
+				//});
+				//alert(tab.id);
+
+			}
+		);
+
 	});
 
 	// If custom icon URL has been set and exists, evaluates to true to center the custom icon
