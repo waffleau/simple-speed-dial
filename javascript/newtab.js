@@ -8,15 +8,15 @@ function addNewEntryButton(entryArray) {
 
 function addSpeedDialBookmark(bookmark, entryArray) {
     var entry = $('<div id="' + bookmark.id + '" class="entry">' +
-    '<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '">' +
-    '<div class="image"></div>' +
-    '<table class="details"><tbody><tr>' +
-    '<td class="edit" title="Edit"><span class="foundicon-edit"></span></td>' +
-    '<td class="reload" title="Reload"><span class="foundicon-reload"></span></td>' +
-    '<td class="title">' + bookmark.title + '</td>' +
-    '<td class="remove" title="Remove"><span class="foundicon-remove"></span></td></tr></tbody>' +
-    '</table>' +
-    '</a>' +
+        '<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '">' +
+            '<div class="image"></div>' +
+            '<table class="details"><tbody><tr>' +
+                '<td class="edit" title="Edit"><span class="foundicon-edit"></span></td>' +
+                '<td class="reload" title="Reload"><span class="foundicon-reload"></span></td>' +
+                '<td class="title">' + bookmark.title + '</td>' +
+                '<td class="remove" title="Remove"><span class="foundicon-remove"></span></td></tr></tbody>' +
+            '</table>' +
+        '</a>' +
     '</div>');
 
 
@@ -39,8 +39,11 @@ function addSpeedDialBookmark(bookmark, entryArray) {
 
     entry.find(".reload").on("click", function (event) {
         event.preventDefault();
+        //open bookmark in new window
         chrome.tabs.create({url: bookmark.url}, function (tab) {
+                //add listener 
                 chrome.tabs.onUpdated.addListener(function (tabId, info) {
+                    //if this current tab and it update complete - capture thumbnail
                     if (tab.id == tabId && info.status == "complete") {
                         chrome.tabs.captureVisibleTab(
                             null,
@@ -48,8 +51,11 @@ function addSpeedDialBookmark(bookmark, entryArray) {
                             function (dataUrl) {
                                 localStorage.setItem(_local_storage_path, dataUrl);
                                 //alert(dataUrl);
+                                // close tab with thumbnail
                                 chrome.tabs.remove(tabId, function () {
+                                    // get current tab (tab with speed dial) and reload it (for load new thumbnail) 
                                     chrome.tabs.getCurrent(function (tab) {
+                                        //null (current tab) not worked - speed dial not reloaded
                                         chrome.tabs.reload(tab.id);
                                     });
                                 });
