@@ -46,3 +46,7 @@
 .foundicon-folder:before {
   content: "\f02a";
 }
+
+.foundicon-reload:before {
+  content: "\f01d";
+}

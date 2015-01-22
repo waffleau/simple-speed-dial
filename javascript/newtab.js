@@ -8,22 +8,22 @@ function addNewEntryButton(entryArray) {
 
 function addSpeedDialBookmark(bookmark, entryArray) {
 	var entry = $('<div id="' + bookmark.id + '" class="entry">' +
-	'<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '">' +
-	'<div class="image"></div>' +
-	'<table class="details"><tbody><tr>' +
-	'<td class="edit" title="Edit"><span class="foundicon-edit"></span></td>' +
-	'<td class="reload" title="Reload"><span class="foundicon-edit"></span></td>' +
-	'<td class="title">' + bookmark.title + '</td>' +
-	'<td class="remove" title="Remove"><span class="foundicon-remove"></span></td></tr></tbody>' +
-	'</table>' +
-	'</a>' +
+		'<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '">' +
+			'<div class="image"></div>' +
+				'<table class="details"><tbody><tr>' +
+				'<td class="edit" title="Edit"><span class="foundicon-edit"></span></td>' +
+				'<td class="reload" title="Reload"><span class="foundicon-reload"></span></td>' +
+				'<td class="title">' + bookmark.title + '</td>' +
+				'<td class="remove" title="Remove"><span class="foundicon-remove"></span></td></tr></tbody>' +
+			'</table>' +
+			'</a>' +
 	'</div>');
 
 
 	//alert(localStorage.getItem("custom_icon_data"+bookmark.id));
 
-	if (localStorage.getItem("custom_icon_data"+bookmark.url) != null) {
-		entry.find(".image").css("background-image", "url(" + localStorage.getItem("custom_icon_data"+bookmark.url) + ")");
+	if (localStorage.getItem("custom_icon_data_" + bookmark.url) != null) {
+		entry.find(".image").css("background-image", "url(" + localStorage.getItem("custom_icon_data" + bookmark.url) + ")");
 	}
 	entry.find(".edit").on("click", function(event) {
 		event.preventDefault();
@@ -45,12 +45,14 @@ function addSpeedDialBookmark(bookmark, entryArray) {
 							null,
 							{},
 							function (dataUrl) {
-								//alert(bookmark.url);
-								localStorage.setItem("custom_icon_data" + bookmark.url, dataUrl);
+								//alert(dataUrl);
+								localStorage.setItem("custom_icon_data_" + bookmark.url, dataUrl);
+								//chrome.tabs.remove(tabId);
 								//localStorage.setItem('ImgStorage',dataUrl);
-								//entry.find(".image").css("background-image", "url(" + localStorage.getItem('ImgStorage')
-								// + ")"); entry.find(".image").css("background-image", "url(" +
-								// getThumbnailUrlFromLocalStorage(bookmark, dataUrl) + ")");
+                                //entry.find(".image").css("background-image", "url(" +
+                                // localStorage.getItem('ImgStorage') + ")");
+                                // entry.find(".image").css("background-image", "url(" +
+                                // getThumbnailUrlFromLocalStorage(bookmark, dataUrl) + ")");
 
 								//sendResponse({imgSrc:dataUrl});
 							}

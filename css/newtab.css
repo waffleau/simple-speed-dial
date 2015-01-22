@@ -58,16 +58,16 @@ td {
 	opacity: 0.6;
 }
 
-.edit, .remove {
+.edit, .remove, .reload {
 	opacity: 0.0;
 	width: 1em;
 }
 
-.entry:hover .details .edit, .entry:hover .details .remove {
+.entry:hover .details .edit, .entry:hover .details .remove, .entry:hover .details .reload {
 	opacity: 0.25;
 }
 
-.entry:hover .details .edit:hover, .entry:hover .details .remove:hover {
+.entry:hover .details .edit:hover, .entry:hover .details .remove:hover, .entry:hover .details .reload:hover {
 	opacity: 0.6;
 }
 
