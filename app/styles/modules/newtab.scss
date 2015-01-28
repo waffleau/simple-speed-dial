@@ -1,0 +1,133 @@
+
+.dial {
+  text-align: center;
+}
+
+.dial__content {
+  display: inline-block;
+}
+
+.entry {
+  float: left;
+  border: 7px solid transparent;
+
+  &:hover {
+    border: 7px solid rgba(53, 191, 256, 0.5);
+    border-radius: 2px;
+  }
+}
+
+.bookmark {
+  background: #fff;
+  box-shadow: 2px 2px 1px #aaa;
+  border-radius: 2px;
+  float: left;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+
+  &:hover {
+    color: #444;
+  }
+
+  .image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
+
+.custom-icon {
+  background-size: contain;
+  background-position: center;
+}
+
+.details {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  opacity: 0.6;
+}
+
+.edit, .remove, .reload {
+  opacity: 0.0;
+  width: 1em;
+}
+
+.entry:hover .details .edit, .entry:hover .details .remove, .entry:hover .details .reload {
+  opacity: 0.25;
+}
+
+.entry:hover .details .edit:hover, .entry:hover .details .remove:hover, .entry:hover .details .reload:hover {
+  opacity: 0.6;
+}
+
+.details .title {
+  vertical-align: baseline;
+  color: #222;
+  font-size: 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.entry:hover .title {
+  opacity: 0.9;
+}
+
+
+#new_entry div {
+  background-color: #aaa;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.fa-folder, .fa-plus {
+  position: relative;
+}
+
+#bookmark_form h1 {
+  font-size: 1.5em;
+}
+
+#bookmark_form span {
+  display: inline-block;
+  padding: 0 5px;
+  text-align: right;
+  width: 110px;
+  margin-left: -20px;
+}
+
+#bookmark_form input {
+  padding: 0 5px;
+  width: 300px;
+}
+
+#bookmark_form button {
+  width: 10em;
+  height: 2em;
+  font-size: 110%;
+}
+
+.options-link {
+  font-size: 7em;
+  color: #aaa;
+  position: absolute;
+  right: 5px;
+  top: -5px;
+  text-decoration: none;
+}
+
+#options a:hover {
+  color: #888;
+  text-shadow: 0px 0px 10px rgba(53, 191, 255, 0.6);
+}
+
+#folder_list {
+  margin: 20px auto 10px auto;
+  min-width: 20em;
+  max-width: 30%;
+}
