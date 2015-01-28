@@ -69,9 +69,9 @@
   }
 
   # Creates default localStorage values if they don't already exist
-  Object.keys(defaultValues).forEach (name) ->
-    if !localStorage.getItem(name)?
-      localStorage.setItem(name, defaultValues[name])
+  for name, value of defaultValues
+    if !localStorage.getItem(name)? || localStorage.getItem(name) == "undefined"
+      localStorage.setItem(name, value)
 
 
 # Initialisation routines for all pages
