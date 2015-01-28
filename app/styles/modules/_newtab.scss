@@ -1,15 +1,18 @@
-
+// Dial
 .dial {
   text-align: center;
 }
 
 .dial__content {
   display: inline-block;
+  text-align: left;
 }
 
+
+// Entry
 .entry {
-  float: left;
   border: 7px solid transparent;
+  display: inline-block;
 
   &:hover {
     border: 7px solid rgba(53, 191, 256, 0.5);
@@ -17,68 +20,79 @@
   }
 }
 
+
+// Bookmark
 .bookmark {
   background: #fff;
   box-shadow: 2px 2px 1px #aaa;
   border-radius: 2px;
-  float: left;
+  display: block;
   height: 100%;
-  width: 100%;
+  position: relative;
   text-decoration: none;
+  width: 100%;
 
   &:hover {
     color: #444;
   }
 
-  .image {
+  .bookmark__image {
     background-size: cover;
     background-repeat: no-repeat;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
+
+  .custom {
+    background-size: contain;
+    background-position: center;
+  }
 }
 
-.custom-icon {
-  background-size: contain;
-  background-position: center;
-}
 
-.details {
+// Bookmark details
+.bookmark__details {
   border-collapse: collapse;
+  bottom: 0;
+  display: table;
+  position: absolute;
   width: 100%;
 }
 
-td {
-  opacity: 0.6;
-}
 
-.edit, .remove, .reload {
+// Bookmark actions
+.bookmark__action {
+  color: #333;
+  display: table-cell;
   opacity: 0.0;
   width: 1em;
 }
 
-.entry:hover .details .edit, .entry:hover .details .remove, .entry:hover .details .reload {
-  opacity: 0.25;
+.entry:hover .bookmark__action {
+  opacity: 0.4;
 }
 
-.entry:hover .details .edit:hover, .entry:hover .details .remove:hover, .entry:hover .details .reload:hover {
-  opacity: 0.6;
+.entry:hover .bookmark__action:hover {
+  opacity: 1;
 }
 
-.details .title {
-  vertical-align: baseline;
-  color: #222;
+
+// Bookmark title
+.bookmark__title {
+  color: #333;
   font-size: 1em;
+  overflow: hidden;
+  text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
 }
 
-.entry:hover .title {
+.entry:hover .bookmark__title {
   opacity: 0.9;
 }
 
 
+// New entry
 #new_entry div {
   background-color: #aaa;
   border-radius: 5px;
@@ -112,6 +126,8 @@ td {
   font-size: 110%;
 }
 
+
+// Options button
 .options-link {
   font-size: 7em;
   color: #aaa;
@@ -119,14 +135,16 @@ td {
   right: 5px;
   top: -5px;
   text-decoration: none;
+
+  &:hover {
+    color: #888;
+    text-shadow: 0px 0px 10px rgba(53, 191, 255, 0.6);
+  }
 }
 
-#options a:hover {
-  color: #888;
-  text-shadow: 0px 0px 10px rgba(53, 191, 255, 0.6);
-}
 
-#folder_list {
+// Folder list
+.folder-list {
   margin: 20px auto 10px auto;
   min-width: 20em;
   max-width: 30%;

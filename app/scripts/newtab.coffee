@@ -49,13 +49,13 @@
 @addSpeedDialBookmark = (bookmark, entryArray) ->
   entry = $('<div id="' + bookmark.id + '" class="entry">' +
     '<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '"">' +
-      '<div class="image"></div>' +
-      '<table class="details"><tbody><tr>' +
-        '<td class="edit" title="Edit"><span class="fa fa-pencil"></span></td>' +
-        '<td class="reload" title="Reload"><span class="fa fa-refresh"></span></td>' +
-        '<td class="title">' + bookmark.title + '</td>' +
-        '<td class="remove" title="Remove"><span class="fa fa-times"></span></td></tr></tbody>' +
-      '</table>' +
+      '<div class="bookmark__image"></div>' +
+      '<div class="bookmark__details">' +
+        '<span class="bookmark__action edit" title="Edit"><i class="fa fa-pencil"></i></span>' +
+        '<span class="bookmark__action reload" title="Reload"><i class="fa fa-refresh"></i></span>' +
+        '<span class="bookmark__title">' + bookmark.title + '</span>' +
+        '<span class="bookmark__action remove" title="Remove"><i class="fa fa-times"></i></span>' +
+      '</div>' +
     '</a>' +
   '</div>')
 
@@ -65,9 +65,9 @@
   bookmarkUrl = 'custom_icon_data_' + bookmark.url
 
   if localStorage.getItem(bookmarkUrl) == null
-    entry.find('.image').css('background-image', 'url(' + getThumbnailUrl(bookmark) + ')')
+    entry.find('.bookmark__image').css('background-image', 'url(' + getThumbnailUrl(bookmark) + ')')
   else
-    entry.find('.image').css('background-image', 'url(' + localStorage.getItem(bookmarkUrl) + ')')
+    entry.find('.bookmark__image').css('background-image', 'url(' + localStorage.getItem(bookmarkUrl) + ')')
 
   entry.find('.edit').on 'click', (e) ->
     e.preventDefault()
@@ -103,7 +103,7 @@
 
   # If custom icon URL has been set and exists, evaluates to true to center the custom icon
   if JSON.parse(localStorage.getItem('custom_icon_data'))[bookmark.url]
-    entry.find('.image').addClass('custom-icon')
+    entry.find('.bookmark__image').addClass('custom')
 
   entryArray.push(entry)
 
@@ -111,12 +111,12 @@
 @addSpeedDialFolder = (bookmark, entryArray) ->
   entry = $('<div class="entry" id="' + bookmark.id + '">' +
               '<a class="bookmark" href="views/newtab.html#"' + bookmark.id + '" title="' + bookmark.title + '">' +
-                '<div class="image"><span class="fa fa-folder"></span></div>' +
-                '<table class="details"><tbody><tr>' +
-                  '<td class="edit" title="Edit"><span class="fa fa-pencil"></span></td>' +
-                  '<td class="title"><div>' + bookmark.title + '</div></td>' +
-                  '<td class="remove" title="Remove"><span class="fa fa-times"></span></td></tr></tbody>' +
-                '</table>' +
+                '<div class="bookmark__image"><span class="fa fa-folder"></span></div>' +
+                '<div class="bookmark__details">' +
+                  '<span class="bookmark__action edit" title="Edit"><i class="fa fa-pencil"></i></span>' +
+                  '<span class="bookmark__title">' + bookmark.title + '</span>' +
+                    '<span class="bookmark__action remove" title="Remove"><i class="fa fa-times"></i></span>' +
+                '</div>' +
               '</a>' +
             '</div>')
 
@@ -151,9 +151,8 @@
   # Height values are 3/4 or * 0.75 width values
   $('#styles').html(
     '#dial { width:' + (adjustedDialWidth || 0) + 'px; } ' +
-    '.entry { height:' + (entryWidth * 0.75 || 0) + 'px; width:' + (entryWidth || 0) + 'px; } ' +
-    'td.title { max-width:' + (entryWidth - 50 || 0) + 'px; } ' +
-    '.image { height:' + ((entryWidth * 0.75) - 20 || 0) + 'px } ' +
+    '.entry { height:' + (entryWidth * 0.85 || 0) + 'px; width:' + (entryWidth || 0) + 'px; } ' +
+    '.bookmark__image { height:' + ((entryWidth * 0.75) - 20 || 0) + 'px } ' +
     '.fa-folder { font-size:' + (entryWidth * 0.5 || 0) + 'px; top:' + (entryWidth * 0.05 || 0) + 'px; color:' + folderColor + ' } ' +
     '.fa-plus { font-size:' + (entryWidth * 0.3 || 0) + 'px; top:' + (entryWidth * 0.18 || 0) + 'px; } '
   )
@@ -264,7 +263,3 @@ document.addEventListener 'DOMContentLoaded', () ->
   # Change the current dial if the page hash changes
   $(window).on 'hashchange', () ->
     createSpeedDial(getStartingFolder())
-
-  # Load the .css that refrences the .woff font file asynchronously in an ajax request, halves render speed of dial
-  $.get().done () ->
-    $('#foundicons').prop('href', '/styles/vendor/font-awesome.min.css')
