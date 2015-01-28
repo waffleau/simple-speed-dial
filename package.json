@@ -1,5 +1,5 @@
 {
-  "name": "simple-speed-dial",
+  "name": "Simple Speed Dial",
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
@@ -24,7 +24,8 @@
     "jshint-stylish": "~0.1.5",
     "grunt-chrome-manifest": "~0.2.0",
     "grunt-contrib-compress": "~0.9.1",
-    "grunt-contrib-sass": "~0.8.1"
+    "grunt-contrib-sass": "~0.8.1",
+    "grunt-contrib-coffee": "~0.12.0"
   },
   "engines": {
     "node": ">=0.8.0"

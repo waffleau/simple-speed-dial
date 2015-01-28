@@ -3,11 +3,12 @@
 
 	<head>
 		<title>Speed Dial Options</title>
-		<link type="text/css" rel="stylesheet" href="/styles/options.css" />
+
+		<link rel="stylesheet" type="text/css" href="/styles/styles.css" />
 	</head>
 
 	<body>
-		<div id="content">
+		<div class="options">
 			<h1>Display Options</h1>
 			<table class="form">
 				<tbody>
@@ -97,7 +98,7 @@
 
 			<p><input type="checkbox" id="show_advanced"><label for="show_advanced"> Show Advanced Settings</label></p>
 
-			<div id="advanced">
+			<div id="advanced" class="advanced">
 				<h1>Advanced Options</h1>
 				<p>Incorrect application of these settings can break the speed dial.</p>
 				<table class="form">
@@ -131,14 +132,12 @@
 				</table>
 			</div>
 
-			<input type="button" id="save" value="Save">
-			<input type="button" id="cancel" value="Cancel">
+			<button type="commit" id="save">Save</button>
+			<button id="cancel">Cancel</button>
 		</div>
 
-		<script type="text/javascript" src="/scripts/vendor/jquery.min.js"></script>
-		<script type="text/javascript" src="/scripts/common.js"></script>
-		<script type="text/javascript" src="/scripts/options.js"></script>
-		<script type="text/javascript" src="/scripts/background.js"></script>
+    <script type="text/javascript" src="/scripts/vendor.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 	</body>
 
 </html>

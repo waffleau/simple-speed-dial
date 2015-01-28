@@ -9,6 +9,9 @@
 
 module.exports = function (grunt) {
 
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
@@ -33,9 +36,9 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['bowerInstall']
       },
-      js: {
-        files: ['<%= config.app %>/scripts/{,*/}\*.js'],
-        tasks: ['jshint'],
+      coffee: {
+        files: ['<%= config.app %>/scripts/{,*/}*.coffee'],
+        tasks: ['coffee'],
         options: {
           livereload: true
         }
@@ -43,9 +46,16 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: [],
+      js: {
+        files: ['<%= config.app %>/scripts/vendor/{,*/}*.js'],
+        tasks: ['concat'],
+        options: {
+          livereload: true
+        }
+      },
+      sass: {
+        files: ['<%= config.app %>/styles/{,*/}*.scss'],
+        tasks: ['sass'],
         options: {
           livereload: true
         }
@@ -55,11 +65,13 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= config.app %>/*.html',
+          '<%= config.app %>/views/*.html',
+          '<%= config.app %>/fonts/*',
           '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= config.app %>/manifest.json',
           '<%= config.app %>/_locales/{,*/}*.json'
-        ]
+        ],
+        tasks: ['copy:staging']
       }
     },
 
@@ -71,20 +83,12 @@ module.exports = function (grunt) {
         // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
-      chrome: {
+      all: {
         options: {
           open: false,
           base: [
-            '<%= config.app %>'
-          ]
-        }
-      },
-      test: {
-        options: {
-          open: false,
-          base: [
-            'test',
-            '<%= config.app %>'
+            '<%= config.app %>',
+            '<%= config.staging %>'
           ]
         }
       }
@@ -92,7 +96,14 @@ module.exports = function (grunt) {
 
     // Empties folders to start fresh
     clean: {
-      chrome: {
+      staging: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.staging %>/*',
+            '!<%= config.staging %>/.git*'
+          ]
+        }]
       },
       dist: {
         files: [{
@@ -102,6 +113,16 @@ module.exports = function (grunt) {
             '!<%= config.dist %>/.git*'
           ]
         }]
+      }
+    },
+
+    coffee: {
+      build: {
+        expand: true,
+        flatten: true,
+        files: {
+          '<%= config.staging %>/scripts/app.js' : '<%= config.app %>/scripts/**.coffee',
+        }
       }
     },
 
@@ -165,7 +186,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'styles',
           src: ['*.scss'],
-          dest: '../public',
+          dest: '<%= config.dist %>',
           ext: '.css'
         }]
       }
@@ -179,6 +200,14 @@ module.exports = function (grunt) {
           src: '{,*/}*.svg',
           dest: '<%= config.dist %>/images'
         }]
+      }
+    },
+
+    sass: {
+      build: {
+        files: {
+          '<%= config.staging %>/styles/styles.css' : '<%= config.app %>/styles/styles.scss'
+        }
       }
     },
 
@@ -224,12 +253,27 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // concat: {
-    //   dist: {}
-    // },
+    concat: {
+      '<%= config.staging %>/scripts/vendor.js' : ['<%= config.app %>/scripts/vendor/**.js']
+    },
 
     // Copies remaining files to places other tasks can use
     copy: {
+      staging: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>',
+          dest: '<%= config.staging %>',
+          src: [
+            '_locales/{,*/}*.json',
+            'fonts/*.*',
+            'images/{,*/}*.{webp,gif,png,jpg}',
+            'views/*.html',
+            '*.json'
+          ]
+        }]
+      },
       dist: {
         files: [{
           expand: true,
@@ -240,8 +284,6 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.{webp,gif}',
             '{,*/}*.html',
-            //'scripts/{,*/}*.js',
-            //'styles/{,*/}*.css',
             'styles/fonts/{,*/}*.*',
             '_locales/{,*/}*.json',
           ]
@@ -299,9 +341,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('debug', function () {
     grunt.task.run([
+      'clean:staging',
+      'copy:staging',
+      'concat',
+      'coffee',
+      'sass',
       //'jshint',
-      'concurrent:chrome',
-      'connect:chrome',
+      'connect',
       'watch'
     ]);
   });

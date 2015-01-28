@@ -1,46 +1,34 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Speed Dial</title>
+    <head>
+        <title>Speed Dial</title>
 
-		<!-- build:css styles/styles.css -->
-		<link rel="stylesheet" type="text/css" href="../styles/vendor/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="../styles/vendor/reveal.css" />
-		<link rel="stylesheet" type="text/css" href="../styles/newtab.css" />
-		<!-- endbuild -->
+        <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
 
-		<!-- Inline -->
-		<style type="text/css" id="styles"></style>
-	</head>
+        <!-- Inline -->
+        <style type="text/css" id="styles"></style>
+    </head>
 
-	<body>
-		<div id="content">
-			<div id="folder"></div>
-			<div id="dial"></div>
+    <body>
+        <div class="dial">
+            <div class="dial__folder" id="folder"></div>
+            <div class="dial__content" id="dial"></div>
 
-			<div id="bookmark_form" class="reveal-modal">
-			     <h1></h1>
-			     <p><span>Title:</span><input type="text" class="title" placeholder="Enter Title" /></p>
-			     <p><span>URL:</span><input type="text" class="url" placeholder="Enter URL" /></p>
-			     <p><span>Custom Icon:</span><input type="text" class="icon" placeholder="Enter URL of Custom Icon/Image" /></p>
-			     <button class="close-reveal-modal">Save</button>
-			     <a class="close close-reveal-modal">x</a>
-			</div>
+            <div id="bookmark_form" class="reveal-modal">
+                <h1></h1>
+                <p><span>Title:</span><input type="text" class="title" placeholder="Enter Title" /></p>
+                <p><span>URL:</span><input type="text" class="url" placeholder="Enter URL" /></p>
+                <p><span>Custom Icon:</span><input type="text" class="icon" placeholder="Enter URL of Custom Icon/Image" /></p>
+                <button class="close-reveal-modal">Save</button>
+                <a class="close close-reveal-modal">x</a>
+            </div>
+        </div>
 
-			<div id="options"></div>
-		</div>
+        <a href="/views/options.html" id="options-link" class="options-link">
+            <span class="fa fa-gear"></span>
+        </a>
 
-		<!-- build:js scripts/vendor.js -->
-		<script src="../scripts/vendor/jquery.min.js"></script>
-		<script src="../scripts/vendor/jquery.sortable.js"></script>
-		<script src="../scripts/vendor/jquery.reveal.js"></script>
-		<!-- endbuild -->
-
-		<!-- build:js scripts/app.js -->
-		<script src="../scripts/common.js"></script>
-		<script src="../scripts/bookmarks.js"></script>
-		<script src="../scripts/newtab.js"></script>
-		<script src="../scripts/background.js"></script>
-		<!-- endbuild -->
-	</body>
+        <script type="text/javascript" src="/scripts/vendor.js"></script>
+        <script type="text/javascript" src="/scripts/app.js"></script>
+    </body>
 </html>
