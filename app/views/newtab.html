@@ -14,13 +14,27 @@
             <div class="dial__folder" id="folder"></div>
             <div class="dial__content" id="dial"></div>
 
-            <div id="bookmark_form" class="reveal-modal">
-                <h1></h1>
-                <p><span>Title:</span><input type="text" class="title" placeholder="Enter Title" /></p>
-                <p><span>URL:</span><input type="text" class="url" placeholder="Enter URL" /></p>
-                <p><span>Custom Icon:</span><input type="text" class="icon" placeholder="Enter URL of Custom Icon/Image" /></p>
-                <button class="close-reveal-modal">Save</button>
-                <a class="close close-reveal-modal">x</a>
+            <div id="bookmark-form" class="reveal-modal">
+                <a class="close close-reveal-modal"><i class="fa fa-times"></i></a>
+
+                <form class="form-horizontal" role="form">
+                    <h1></h1>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Title</label>
+                        <input type="text" class="col-sm-9 form-control title" placeholder="Enter Title" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">URL</label>
+                        <input type="url" class="col-sm-9 form-control url" placeholder="Enter URL" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Custom Icon</label>
+                        <input type="url" class="col-sm-9 form-control icon" placeholder="Enter URL of custom icon / image" />
+                    </div>
+
+                    <button class="close-reveal-modal btn btn-success">Save this bookmark</button>
+                </form>
             </div>
         </div>
 

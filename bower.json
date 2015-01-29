@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "jquery" : "latest",
-    "reveal" : "https://github.com/zurb/reveal"
+    "bootstrap-sass" : "latest",
+    "font-awesome" : "latest",
+    "jquery-sortable" : "https://github.com/johnny/jquery-sortable"
   },
   "devDependencies": {}
 }

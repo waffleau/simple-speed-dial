@@ -36,7 +36,7 @@
 
       folderList.sort (a, b) -> a.path.localeCompare(b.path)
 
-      folderListHtml = $('<select id="folder-list" class="folder-list"></select>')
+      folderListHtml = $('<select id="folder-list" class="folder-list form-control"></select>')
 
       folderList.forEach (item) ->
         folderListHtml.append(new Option(item.path, item.id))

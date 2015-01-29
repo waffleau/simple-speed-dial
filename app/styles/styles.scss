@@ -1,7 +1,13 @@
 @import "vendor/font-awesome.min";
 @import "vendor/reveal";
 
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/forms";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+
 @import "modules/settings";
-@import "modules/scaffold";
 @import "modules/newtab";
 @import "modules/options";

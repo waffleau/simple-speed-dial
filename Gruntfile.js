@@ -32,10 +32,10 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      bower: {
-        files: ['bower.json'],
-        tasks: ['bowerInstall']
-      },
+      //bower: {
+      //  files: ['bower.json'],
+      //  tasks: ['bowerInstall']
+      //},
       coffee: {
         files: ['<%= config.app %>/scripts/{,*/}*.coffee'],
         tasks: ['coffee'],
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
     bowerInstall: {
       app: {
         src: [
-          '<%= config.app %>/*.html'
+          '<%= config.app %>/views/*.html'
         ]
       }
     },

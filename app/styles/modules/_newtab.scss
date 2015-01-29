@@ -28,35 +28,47 @@
   border-radius: 2px;
   display: block;
   height: 100%;
+  overflow: hidden;
   position: relative;
   text-decoration: none;
+  text-overflow: ellipsis;
   width: 100%;
+  z-index: 10;
 
   &:hover {
     color: #444;
   }
+}
 
-  .bookmark__image {
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
 
-  .custom {
-    background-size: contain;
-    background-position: center;
-  }
+// Bookmark image
+.bookmark__image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  height: 100%;
+}
+
+.bookmark__image.custom {
+  background-size: contain;
+  background-position: center;
 }
 
 
 // Bookmark details
 .bookmark__details {
+  background: white;
   border-collapse: collapse;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top: 1px solid #ddd;
   bottom: 0;
   display: table;
+  height: 25px;
+  line-height: 25px;
   position: absolute;
   width: 100%;
+  z-index: 20;
 }
 
 
@@ -80,6 +92,7 @@
 // Bookmark title
 .bookmark__title {
   color: #333;
+  display: table-cell;
   font-size: 1em;
   overflow: hidden;
   text-align: center;
@@ -93,44 +106,24 @@
 
 
 // New entry
-#new_entry div {
-  background-color: #aaa;
-  border-radius: 5px;
+.new-entry {
+  cursor: pointer;
   height: 100%;
 }
 
-.fa-folder, .fa-plus {
-  position: relative;
-}
-
-#bookmark_form h1 {
-  font-size: 1.5em;
-}
-
-#bookmark_form span {
-  display: inline-block;
-  padding: 0 5px;
-  text-align: right;
-  width: 110px;
-  margin-left: -20px;
-}
-
-#bookmark_form input {
-  padding: 0 5px;
-  width: 300px;
-}
-
-#bookmark_form button {
-  width: 10em;
-  height: 2em;
-  font-size: 110%;
+.new-entry__content {
+  background-color: #aaa;
+  border-radius: 2px;
+  display: block;
+  height: 100%;
 }
 
 
 // Options button
 .options-link {
-  font-size: 7em;
   color: #aaa;
+  font-size: 7em;
+  line-height: normal;
   position: absolute;
   right: 5px;
   top: -5px;

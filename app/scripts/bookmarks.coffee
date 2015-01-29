@@ -71,5 +71,5 @@ URL_REGEXP = /^(http|https|ftp|file|chrome|chrome-extension):\/\/(\w+:{0,1}\w*@)
 
 
 @updateBookmarksOrder = () ->
-  $('.entry').not('#new_entry').each (index) ->
+  $('.entry').not('#new-entry').each (index) ->
     chrome.bookmarks.move(this.id, { parentId: $('#dial').prop('folderId'), index: index })

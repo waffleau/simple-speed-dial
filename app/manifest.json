@@ -26,7 +26,6 @@
     ],
     "optional_permissions": [
         "tabs",
-        "<all_urls>"
     ],
     "update_url": "http://clients2.google.com/service/update2/crx"
 }
