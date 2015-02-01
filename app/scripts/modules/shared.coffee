@@ -28,7 +28,7 @@
 
           while (child = node.children.pop())?
             if child.children?
-              child.path = node.path + '/'
+              child.path = node.path + ' > '
               openList.push(child)
 
 
@@ -43,8 +43,8 @@
 
       $('#folder').html(folderListHtml)
 
-      $('#folder_list').prop('value', getStartingFolder()).on 'change', () ->
-        window.location.hash = $('#folder_list').prop('value')
+      $('#folder-list').prop('value', getStartingFolder()).on 'change', () ->
+        window.location.hash = $('#folder-list').prop('value')
 
 
 # Create default localStorage values if they don't already exist

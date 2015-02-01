@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "dependencies": {
     "jquery" : "latest",
+    "angular" : "latest",
+    "angular-bootstrap" : "latest",
     "bootstrap-sass" : "latest",
-    "font-awesome" : "latest",
-    "jquery-sortable" : "https://github.com/johnny/jquery-sortable"
+    "font-awesome" : "latest"
   },
   "devDependencies": {}
 }

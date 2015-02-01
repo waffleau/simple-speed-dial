@@ -38,27 +38,14 @@ module.exports = function (grunt) {
       //},
       coffee: {
         files: ['<%= config.app %>/scripts/{,*/}*.coffee'],
-        tasks: ['coffee'],
-        options: {
-          livereload: true
-        }
+        tasks: ['coffee']
       },
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      js: {
-        files: ['<%= config.app %>/scripts/vendor/{,*/}*.js'],
-        tasks: ['concat'],
-        options: {
-          livereload: true
-        }
-      },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.scss'],
-        tasks: ['sass'],
-        options: {
-          livereload: true
-        }
+        tasks: ['sass']
       },
       livereload: {
         options: {
@@ -121,7 +108,8 @@ module.exports = function (grunt) {
         expand: true,
         flatten: true,
         files: {
-          '<%= config.staging %>/scripts/app.js' : '<%= config.app %>/scripts/**.coffee',
+          '<%= config.staging %>/scripts/modules.js' : '<%= config.app %>/scripts/modules/**.coffee',
+          '<%= config.staging %>/scripts/app.js' : '<%= config.app %>/scripts/app.coffee',
         }
       }
     },
@@ -253,8 +241,13 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
+
     concat: {
-      '<%= config.staging %>/scripts/vendor.js' : ['<%= config.app %>/scripts/vendor/**.js']
+      '<%= config.staging %>/scripts/vendor.js' : [
+        '<%= config.app %>/bower_components/jquery/dist/jquery.min.js',
+        '<%= config.app %>/bower_components/angular/angular.min.js',
+        '<%= config.app %>/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      ]
     },
 
     // Copies remaining files to places other tasks can use
@@ -366,7 +359,7 @@ module.exports = function (grunt) {
     'concat',
     'uglify',
     'copy',
-    'usemin',
+    //'usemin',
     'compress'
   ]);
 

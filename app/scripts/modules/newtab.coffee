@@ -2,7 +2,12 @@
 
 
 @addNewEntryButton = (entryArray) ->
-  newEntry = $('<div class="entry new-entry" id="new-entry" title="Add New"><span class="new-entry__content"></span></div>')
+  newEntry = $('<div class="bookmark new-entry" id="new-entry" title="Add New">' +
+                 '<div class="bookmark__overlay"></div>' +
+                 '<span class="new-entry__content">' +
+                   '<i class="fa fa-plus"></i>' +
+                 '</span>' +
+                '</div>')
 
   newEntry.on 'click', () ->
     showBookmarkEntryForm('New Bookmark or Folder', '', '', 'new-entry')
@@ -11,17 +16,16 @@
 
 
 @addSpeedDialBookmark = (bookmark, entryArray) ->
-  entry = $('<div id="' + bookmark.id + '" class="entry">' +
-    '<a class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '"">' +
-      '<div class="bookmark__image"></div>' +
-      '<div class="bookmark__details">' +
-        '<span class="bookmark__action edit" title="Edit"><i class="fa fa-pencil"></i></span>' +
-        '<span class="bookmark__action reload" title="Reload"><i class="fa fa-refresh"></i></span>' +
-        '<span class="bookmark__title">' + bookmark.title + '</span>' +
-        '<span class="bookmark__action remove" title="Remove"><i class="fa fa-times"></i></span>' +
-      '</div>' +
-    '</a>' +
-  '</div>')
+  entry = $('<a id="' + bookmark.id + '" class="bookmark" href="' + bookmark.url + '" title="' + bookmark.title + '"">' +
+              '<div class="bookmark__overlay"></div>' +
+              '<div class="bookmark__image"></div>' +
+              '<div class="bookmark__details">' +
+                '<span class="bookmark__action edit" title="Edit"><i class="fa fa-pencil"></i></span>' +
+                '<span class="bookmark__action reload" title="Reload"><i class="fa fa-refresh"></i></span>' +
+                '<span class="bookmark__title">' + bookmark.title + '</span>' +
+                '<span class="bookmark__action remove" title="Remove"><i class="fa fa-times"></i></span>' +
+              '</div>' +
+            '</a>')
 
 
   #alert(localStorage.getItem('custom_icon_data' + bookmark.id))
@@ -47,16 +51,17 @@
 
 
 @addSpeedDialFolder = (bookmark, entryArray) ->
-  entry = $('<div class="entry" id="' + bookmark.id + '">' +
-              '<a class="bookmark" href="views/newtab.html#"' + bookmark.id + '" title="' + bookmark.title + '">' +
-                '<div class="bookmark__image"><span class="fa fa-folder"></span></div>' +
-                '<div class="bookmark__details">' +
-                  '<span class="bookmark__action edit" title="Edit"><i class="fa fa-pencil"></i></span>' +
-                  '<span class="bookmark__title">' + bookmark.title + '</span>' +
-                    '<span class="bookmark__action remove" title="Remove"><i class="fa fa-times"></i></span>' +
-                '</div>' +
-              '</a>' +
-            '</div>')
+  entry = $('<a id="' + bookmark.id + '" class="bookmark folder" href=#' + bookmark.id + '" title="' + bookmark.title + '">' +
+              '<div class="bookmark__overlay"></div>' +
+              '<div class="bookmark__image">' +
+                '<div class="folder__content"><i class="fa fa-folder"></i></div>' +
+              '</div>' +
+              '<div class="bookmark__details folder__details">' +
+                '<span class="bookmark__action edit" title="Edit"><i class="fa fa-pencil"></i></span>' +
+                '<span class="bookmark__title folder__title">' + bookmark.title + '</span>' +
+                  '<span class="bookmark__action remove" title="Remove"><i class="fa fa-times"></i></span>' +
+              '</div>' +
+            '</a>')
 
   entry.find('.edit').on 'click', (e) ->
     e.preventDefault()
@@ -171,9 +176,11 @@
   dialColumns = localStorage.getItem('dial_columns')
   dialWidth = localStorage.getItem('dial_width')
   folderColor = localStorage.getItem('folder_color')
+
   adjustedDialWidth = window.innerWidth * dialWidth * 0.01
+  bookmarkMargin = 20
   minEntryWidth = 120
-  entryWidth = adjustedDialWidth / dialColumns
+  entryWidth = (adjustedDialWidth / dialColumns) - bookmarkMargin
 
   if entryWidth < minEntryWidth
     entryWidth = minEntryWidth
@@ -182,9 +189,7 @@
   # Height values are 3/4 or * 0.75 width values
   $('#styles').html(
     '#dial { width:' + (adjustedDialWidth || 0) + 'px; } ' +
-    '.entry { height:' + (entryWidth * 0.75 + 25 || 0) + 'px; width:' + (entryWidth || 0) + 'px; } ' +
-    '.fa-folder { font-size:' + (entryWidth * 0.5 || 0) + 'px; top:' + (entryWidth * 0.05 || 0) + 'px; color:' + folderColor + ' } ' +
-    '.fa-plus { font-size:' + (entryWidth * 0.3 || 0) + 'px; top:' + (entryWidth * 0.18 || 0) + 'px; } '
+    '.bookmark { height:' + (entryWidth * 0.8 || 0) + 'px; width:' + (entryWidth || 0) + 'px; } '
   )
 
 

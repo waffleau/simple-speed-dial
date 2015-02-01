@@ -26,17 +26,29 @@
   background: #fff;
   box-shadow: 2px 2px 1px #aaa;
   border-radius: 2px;
-  display: block;
-  height: 100%;
+  display: inline-block;
+  margin: 10px;
   overflow: hidden;
   position: relative;
   text-decoration: none;
   text-overflow: ellipsis;
   width: 100%;
   z-index: 10;
+}
+
+.bookmark__overlay {
+  @include transition(0.2s all);
+  background: black;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 30;
 
   &:hover {
-    color: #444;
+    opacity: 0.1;
   }
 }
 
@@ -46,7 +58,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 2px;
+  display: block;
   height: 100%;
+  width: 100%;
 }
 
 .bookmark__image.custom {
@@ -63,7 +77,6 @@
   border-bottom-right-radius: 2px;
   border-top: 1px solid #ddd;
   bottom: 0;
-  display: table;
   height: 25px;
   line-height: 25px;
   position: absolute;
@@ -75,16 +88,17 @@
 // Bookmark actions
 .bookmark__action {
   color: #333;
-  display: table-cell;
+  display: inline-block;
   opacity: 0.0;
   width: 1em;
+  z-index: 40;
 }
 
-.entry:hover .bookmark__action {
+.bookmark:hover .bookmark__action {
   opacity: 0.4;
 }
 
-.entry:hover .bookmark__action:hover {
+.bookmark:hover .bookmark__action:hover {
   opacity: 1;
 }
 
@@ -92,7 +106,7 @@
 // Bookmark title
 .bookmark__title {
   color: #333;
-  display: table-cell;
+  display: inline-block;
   font-size: 1em;
   overflow: hidden;
   text-align: center;
@@ -100,29 +114,78 @@
   white-space: nowrap;
 }
 
-.entry:hover .bookmark__title {
+.bookmark:hover .bookmark__title {
   opacity: 0.9;
+}
+
+
+// Folders
+.folder-list {
+  margin: 20px auto 10px auto;
+  min-width: 20em;
+  max-width: 30%;
+}
+
+.folder {
+  background-color: #aaa;
+
+}
+
+.folder__content {
+  @include transition(0.2s color);
+  color: #888;
+
+  &:hover {
+    color: #fff;
+  }
+
+  .fa {
+    display: block;
+    font-size: 5em;
+    height: 100%;
+    left: 30%;
+    position: absolute;
+    top: 20%;
+  }
+}
+
+.folder__details {
+  background-color: #888;
+  border-top: none;
+}
+
+.folder__title {
+  color: white;
 }
 
 
 // New entry
 .new-entry {
+  background-color: #aaa;
+  border-radius: 2px;
   cursor: pointer;
   height: 100%;
 }
 
 .new-entry__content {
-  background-color: #aaa;
-  border-radius: 2px;
-  display: block;
-  height: 100%;
+  color: #888;
+  text-align: center;
+
+  .fa {
+    display: block;
+    font-size: 5em;
+    height: 100%;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+  }
 }
 
 
 // Options button
 .options-link {
   color: #aaa;
-  font-size: 7em;
+  font-size: 5em;
   line-height: normal;
   position: absolute;
   right: 5px;
@@ -135,10 +198,3 @@
   }
 }
 
-
-// Folder list
-.folder-list {
-  margin: 20px auto 10px auto;
-  min-width: 20em;
-  max-width: 30%;
-}
