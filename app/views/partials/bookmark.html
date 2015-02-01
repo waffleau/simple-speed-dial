@@ -1,0 +1,26 @@
+<div class="bookmark" title="{{bookmark.title}}" style="height: {{entryHeight}}px; width: {{entryWidth}}px">
+
+  <a href="{{bookmark.url}}" class="bookmark__overlay" ng-click="openBookmark(bookmark)"></a>
+
+  <a class="bookmark__image" style="background-image: url('{{bookmark.image}}');">
+    <div class="folder__content" ng-if="bookmark.isFolder">
+      <i class="fa fa-folder"></i>
+    </div>
+  </a>
+
+  <div class="bookmark__details">
+    <a class="bookmark__title" href="{{bookmark.url}}">{{bookmark.title}}</a>
+
+    <span class="bookmark__actions" dropdown>
+      <span class="dropdown-toggle" dropdown-toggle>
+        <i class="fa fa-ellipsis-v"></i>
+      </span>
+      <ul class="dropdown-menu" role="menu">
+        <li><a ng-click="editBookmark(bookmark)">Edit</a></li>
+        <li ng-if="!bookmark.isFolder"><a ng-click="captureBookmark(bookmark)">Capture tab</a></li>
+        <li><a ng-click="removeBookmark(bookmark)">Delete</a></li>
+      </ul>
+    </span>
+  </div>
+
+</div>

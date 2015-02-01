@@ -1,0 +1,197 @@
+body {
+  background-color: #eee;
+}
+
+// Dial
+.dial {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dial__content {
+  display: inline-block;
+  text-align: left;
+}
+
+
+// Bookmark
+.bookmark {
+  background: $bookmark-background;
+  border-radius: $bookmark-border-radius;
+  box-shadow: $bookmark-box-shadow;
+  display: inline-block;
+  margin: $bookmark-margin;
+  min-width: $bookmark-min-width;
+  position: relative;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  width: 100%;
+
+  &:hover {
+    box-shadow: $bookmark-box-shadow-hover;
+
+    .bookmark__overlay {
+      opacity: 0.1;
+    }
+  }
+}
+
+.bookmark__overlay {
+  @include transition(0.2s all);
+  background: black;
+  height: 100%;
+  left: 0;
+  opacity: 0.0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-bookmark-overlay;
+}
+
+
+// Bookmark image
+.bookmark__image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: $bookmark-border-radius;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.bookmark__image.custom {
+  background-size: contain;
+  background-position: center;
+}
+
+
+// Bookmark details
+.bookmark__details {
+  background: $bookmark-background;
+  border-bottom-left-radius: $bookmark-border-radius;
+  border-bottom-right-radius: $bookmark-border-radius;
+  border-top: $bookmark-details-border-top;
+  bottom: 0;
+  height: $bookmark-details-height;
+  line-height: $bookmark-details-height;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+
+  .dropdown-menu {
+    border-radius: $bookmark-border-radius;
+    z-index: $z-index-bookmark-menu;
+  }
+}
+
+
+// Bookmark actions
+.bookmark__actions {
+  color: $bookmark-menu-color;
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  opacity: 0.0;
+  width: 20px;
+  z-index: $z-index-bookmark-menu;
+
+  .dropdown-toggle {
+    float: right;
+    padding: 0 10px;
+  }
+}
+
+.bookmark:hover .bookmark__actions {
+  opacity: 0.4;
+}
+
+.bookmark:hover .bookmark__actions:hover {
+  opacity: 1;
+}
+
+
+// Bookmark title
+.bookmark__title {
+  color: $bookmark-title-color;
+  display: inline-block;
+  font-size: $bookmark-title-font-size;
+  margin-left: 10px;
+  max-width: 75%;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+// Folders
+.folder-list {
+  margin: 20px auto 10px auto;
+  min-width: 20em;
+  max-width: 30%;
+}
+
+
+// New entry
+.new-entry {
+  background-color: $bookmark-new-entry-background;
+  border-radius: $bookmark-border-radius;
+  cursor: pointer;
+}
+
+.new-entry__content {
+  color: $bookmark-new-entry-color;
+  text-align: center;
+
+  .fa {
+    display: block;
+    font-size: 5em;
+    height: 100%;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+  }
+}
+
+
+// Options button
+.options-link {
+  color: $options-color;
+  font-size: $options-font-size;
+  line-height: normal;
+  position: absolute;
+  right: 5px;
+  top: -5px;
+  text-decoration: none;
+  z-index: $z-index-options;
+
+  &:hover {
+    color: $options-color-hover;
+    text-shadow: $options-text-shadow;
+  }
+}
+
+
+// Options
+.nav-tabs.nav-justified > .active > a {
+  background: #fff;
+  border: 1px solid $grey-lighter;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.nav-tabs.nav-justified > li > a {
+  background: #eee;
+}
+
+.tab-content {
+  background-color: #fff;
+  border: 1px solid $grey-lighter;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 20px;
+}

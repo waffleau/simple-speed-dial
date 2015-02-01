@@ -9,32 +9,17 @@
         <style type="text/css" id="styles"></style>
     </head>
 
-    <body>
-        <div class="dial">
-            <div class="dial__folder" id="folder"></div>
-            <div class="dial__content" id="dial"></div>
+    <body ng-controller="BookmarksCtrl" style="background-color: {{backgroundColor}};">
+        <div class="dial" style="padding-top: {{dialPadding}}px; width: {{dialWidth}}px;" speed-dial>
+            <select class="folder-list form-control" ng-change="fetchBookmarks()" ng-model="folderId" ng-options="f.id as f.path for f in folders"></select>
 
-            <div id="bookmark-form" class="reveal-modal">
-                <a class="close close-reveal-modal"><i class="fa fa-times"></i></a>
+            <div class="dial__content">
+                <dial-entry ng-repeat="bookmark in bookmarks"></dial-entry>
 
-                <form class="form-horizontal" role="form">
-                    <h1></h1>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Title</label>
-                        <input type="text" class="col-sm-9 form-control title" placeholder="Enter Title" />
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">URL</label>
-                        <input type="url" class="col-sm-9 form-control url" placeholder="Enter URL" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Custom Icon</label>
-                        <input type="url" class="col-sm-9 form-control icon" placeholder="Enter URL of custom icon / image" />
-                    </div>
-
-                    <button class="close-reveal-modal btn btn-success">Save this bookmark</button>
-                </form>
+                <div class="bookmark new-entry" title="Add New" ng-show="true" style="height: {{entryHeight}}px; width: {{entryWidth}}px" ng-click="newBookmark()">
+                    <div class="bookmark__overlay"></div>
+                    <span class="new-entry__content"><i class="fa fa-plus"></i></span>
+                </div>
             </div>
         </div>
 
@@ -43,7 +28,6 @@
         </a>
 
         <script type="text/javascript" src="/scripts/vendor.js"></script>
-        <script type="text/javascript" src="/scripts/modules.js"></script>
         <script type="text/javascript" src="/scripts/app.js"></script>
     </body>
 </html>

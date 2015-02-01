@@ -43,6 +43,10 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
+      html: {
+        files: ['<%= config.app %>/views/{,*/}*.html'],
+        tasks: ['copy:staging']
+      },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.scss'],
         tasks: ['sass']
@@ -108,8 +112,12 @@ module.exports = function (grunt) {
         expand: true,
         flatten: true,
         files: {
-          '<%= config.staging %>/scripts/modules.js' : '<%= config.app %>/scripts/modules/**.coffee',
-          '<%= config.staging %>/scripts/app.js' : '<%= config.app %>/scripts/app.coffee',
+          '<%= config.staging %>/scripts/app.js' : [
+            '<%= config.app %>/scripts/app.coffee',
+            '<%= config.app %>/scripts/controllers/*.coffee',
+            '<%= config.app %>/scripts/directives/*.coffee',
+            '<%= config.app %>/scripts/services/*.coffee',
+          ]
         }
       }
     },
@@ -244,9 +252,10 @@ module.exports = function (grunt) {
 
     concat: {
       '<%= config.staging %>/scripts/vendor.js' : [
-        '<%= config.app %>/bower_components/jquery/dist/jquery.min.js',
         '<%= config.app %>/bower_components/angular/angular.min.js',
         '<%= config.app %>/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+        '<%= config.app %>/bower_components/ngDialog/js/ngDialog.min.js',
+        '<%= config.app %>/bower_components/underscore/underscore-min.js',
       ]
     },
 
@@ -262,7 +271,7 @@ module.exports = function (grunt) {
             '_locales/{,*/}*.json',
             'fonts/*.*',
             'images/{,*/}*.{webp,gif,png,jpg}',
-            'views/*.html',
+            'views/{,*/}*.html',
             '*.json'
           ]
         }]

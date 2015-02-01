@@ -2,11 +2,12 @@
   "name": "simple-speed-dial",
   "version": "0.0.0",
   "dependencies": {
-    "jquery" : "latest",
     "angular" : "latest",
     "angular-bootstrap" : "latest",
     "bootstrap-sass" : "latest",
-    "font-awesome" : "latest"
+    "font-awesome" : "latest",
+    "ngDialog" : "latest",
+    "underscore" : "latest"
   },
   "devDependencies": {}
 }
