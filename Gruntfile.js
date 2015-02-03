@@ -253,7 +253,6 @@ module.exports = function (grunt) {
     concat: {
       '<%= config.staging %>/scripts/vendor.js' : [
         '<%= config.app %>/bower_components/angular/angular.min.js',
-        '<%= config.app %>/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
         '<%= config.app %>/bower_components/ngDialog/js/ngDialog.min.js',
         '<%= config.app %>/bower_components/underscore/underscore-min.js',
       ]

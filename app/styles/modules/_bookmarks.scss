@@ -77,37 +77,33 @@ body {
   position: absolute;
   width: 100%;
   z-index: 100;
-
-  .dropdown-menu {
-    border-radius: $bookmark-border-radius;
-    z-index: $z-index-bookmark-menu;
-  }
 }
 
 
 // Bookmark actions
 .bookmark__actions {
+  display: inline-block;
+  float: right;
+  z-index: $z-index-bookmark-menu;
+}
+
+.bookmark:hover .bookmark__action {
+  opacity: 1;
+}
+
+.bookmark__action {
   color: $bookmark-menu-color;
   cursor: pointer;
   display: inline-block;
-  float: right;
-  opacity: 0.0;
-  width: 20px;
-  z-index: $z-index-bookmark-menu;
+  min-width: 16px;
+  opacity: 0.4;
 
-  .dropdown-toggle {
-    float: right;
-    padding: 0 10px;
+  &:hover, &.active {
+    color: $brand-danger;
+    opacity: 1;
   }
 }
 
-.bookmark:hover .bookmark__actions {
-  opacity: 0.4;
-}
-
-.bookmark:hover .bookmark__actions:hover {
-  opacity: 1;
-}
 
 
 // Bookmark title

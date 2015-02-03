@@ -9,17 +9,24 @@
   </a>
 
   <div class="bookmark__details">
-    <a class="bookmark__title" href="{{bookmark.url}}">{{bookmark.title}}</a>
+    <a ng-hide="bookmark.isExpanded" class="bookmark__title" href="{{bookmark.url}}">{{bookmark.title}}</a>
 
-    <span class="bookmark__actions" dropdown>
-      <span class="dropdown-toggle" dropdown-toggle>
-        <i class="fa fa-ellipsis-v"></i>
+    <span class="bookmark__actions">
+      <span class="bookmark__action" ng-show="bookmark.isExpanded" ng-click="editBookmark(bookmark)">
+        <i class="fa fa-edit"></i>
       </span>
-      <ul class="dropdown-menu" role="menu">
-        <li><a ng-click="editBookmark(bookmark)">Edit</a></li>
-        <li ng-if="!bookmark.isFolder"><a ng-click="captureBookmark(bookmark)">Capture tab</a></li>
-        <li><a ng-click="removeBookmark(bookmark)">Delete</a></li>
-      </ul>
+
+      <span class="bookmark__action" ng-if="!bookmark.isFolder" ng-show="bookmark.isExpanded" ng-click="captureBookmark(bookmark)">
+        <i class="fa fa-refresh"></i>
+      </span>
+
+      <span class="bookmark__action" ng-show="bookmark.isExpanded" ng-click="removeBookmark(bookmark)">
+        <i class="fa fa-ban"></i>
+      </span>
+
+      <span class="bookmark__action" ng-click="bookmark.isExpanded = !bookmark.isExpanded" ng-class="{ 'active' : bookmark.isExpanded }">
+        <i class="fa" ng-class="{ 'fa-ellipsis-h' : bookmark.isExpanded, 'fa-ellipsis-v' : !bookmark.isExpanded }"></i>
+      </span>
     </span>
   </div>
 
