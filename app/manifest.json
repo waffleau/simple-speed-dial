@@ -25,7 +25,8 @@
         "storage"
     ],
     "optional_permissions": [
-        "tabs"
+        "tabs",
+        "<all_urls>"
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "update_url": "http://clients2.google.com/service/update2/crx"
