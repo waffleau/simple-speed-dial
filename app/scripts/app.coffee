@@ -2,7 +2,6 @@
 
 angular.module('speeddial', [
   'ngDialog'
-  'ui.bootstrap'
 ])
 
 .run(["$rootScope", "Storage", ($rootScope, Storage) ->
