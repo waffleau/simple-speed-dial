@@ -133,6 +133,7 @@ body {
   background-color: $bookmark-new-entry-background;
   border-radius: $bookmark-border-radius;
   cursor: pointer;
+  margin-left: $bookmark-margin - 5px;  // I don't know why this is needed
 }
 
 .new-entry__content {

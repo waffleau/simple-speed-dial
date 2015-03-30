@@ -32,7 +32,7 @@ angular.module "speeddial"
             localStorage.setItem(name, value)
 
       @deleteCustomData: (bookmark) ->
-        localStorage.clear("#{BOOKMARK_DATA}_#{bookmark.id}")
+        localStorage.removeItem("#{BOOKMARK_DATA}_#{bookmark.id}")
 
 
       @getCustomData: (bookmark) ->
