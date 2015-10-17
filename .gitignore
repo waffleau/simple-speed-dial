@@ -9,5 +9,6 @@ app/bower_components
 test/bower_components
 package
 
-scripts/*.js
-styles/*.css
+app/scripts/*.js
+app/styles/*.css
+app/styles/*.css.map
