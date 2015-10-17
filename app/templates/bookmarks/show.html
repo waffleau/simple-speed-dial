@@ -1,8 +1,6 @@
 <div class="bookmark" style="height: {{entryHeight}}px; width: {{entryWidth}}px">
 
-  <a class="bookmark__image" ng-href="{{bookmark.url}}">
-    <img ng-src="{{bookmark.image}}" ng-if="!bookmark.isFolder" />
-
+  <a class="bookmark__image" ng-href="{{bookmark.url}}" style="background-image: url({{bookmark.image}})">
     <div class="folder__content" ng-if="bookmark.isFolder">
       <i class="fa fa-folder"></i>
     </div>
