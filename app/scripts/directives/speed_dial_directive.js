@@ -17,7 +17,9 @@
           if (scope.entryWidth < minEntryWidth) {
             scope.entryWidth = minEntryWidth;
           }
-          return scope.entryHeight = scope.entryWidth * 0.8 || 0;
+          scope.entryHeight = scope.entryWidth * 0.8 || 0;
+          scope.entryWidth = Math.floor(scope.entryWidth);
+          return scope.entryHeight = Math.floor(scope.entryHeight);
         };
         resize = function() {
           calculateSizes();

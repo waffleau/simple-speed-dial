@@ -16,6 +16,9 @@ speedDial = ($window) ->
         scope.entryWidth = minEntryWidth if scope.entryWidth < minEntryWidth
         scope.entryHeight = scope.entryWidth * 0.8 || 0
 
+        scope.entryWidth = Math.floor(scope.entryWidth)
+        scope.entryHeight = Math.floor(scope.entryHeight)
+
 
       resize = () ->
         calculateSizes()
