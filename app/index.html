@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html ng-app="simpleSpeedDial">
+  <head>
+    <title>Speed Dial</title>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/styles.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- Inline -->
+    <style type="text/css" id="styles"></style>
+  </head>
+
+  <body ng-controller="BookmarksCtrl as bookmarks" ng-style="{ 'background-color': backgroundColor }">
+    <div class="dial" style="padding-top: {{dialPadding}}px; width: {{dialWidth}}px;" speed-dial>
+      <select class="folder-list form-control" ng-change="bookmarks.fetchBookmarks()" ng-model="folderId" ng-options="f.id as f.path for f in bookmarks.getFolders()">
+        <option value="">-- Select Folder --</option>
+      </select>
+
+      <div class="dial__content">
+        <dial-entry ng-repeat="bookmark in bookmarks.getBookmarks()"></dial-entry>
+
+        <div class="bookmark new-entry" title="Add New" ng-show="true" style="height: {{entryHeight}}px; width: {{entryWidth}}px" ng-click="bookmarks.newBookmark()">
+          <div class="bookmark__overlay"></div>
+          <span class="new-entry__content"><i class="fa fa-plus"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <a href="options.html" id="options-link" class="options-link">
+      <span class="fa fa-gear"></span>
+    </a>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/app.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/bookmarks_controller.js"></script>
+    <script src="scripts/controllers/options_controller.js"></script>
+    <script src="scripts/directives/dial_entry_directive.js"></script>
+    <script src="scripts/directives/json_entry_directive.js"></script>
+    <script src="scripts/directives/option_bindings_directive.js"></script>
+    <script src="scripts/directives/speed_dial_directive.js"></script>
+    <script src="scripts/factories/bookmark_factory.js"></script>
+    <script src="scripts/factories/capture_factory.js"></script>
+    <script src="scripts/factories/storage_factory.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>

@@ -1,0 +1,166 @@
+// ==============================================================
+// Local variables
+// ==============================================================
+
+$bookmark-background: #fff;
+$bookmark-border-radius: 2px;
+$bookmark-box-shadow: 2px 2px 0px 0px rgba($grey-light, .5);
+$bookmark-margin: 10px;
+$bookmark-min-width: 120px;
+
+$bookmark-details-border-top: 1px solid $grey-lighter;
+$bookmark-details-height: 25px;
+
+$bookmark-title-color: $grey-dark;
+$bookmark-title-font-size: 12px;
+
+$bookmark-menu-color: $grey-light;
+
+$bookmark-new-entry-background: $grey-light;
+$bookmark-new-entry-color: $grey-dark;
+
+
+// ==============================================================
+// Styles
+// ==============================================================
+
+.bookmark {
+  min-width: $bookmark-min-width;
+  width: 100%;
+
+  display: inline-block;
+  margin: $bookmark-margin;
+  position: relative;
+
+  background: $bookmark-background;
+  border-radius: $bookmark-border-radius;
+  box-shadow: $bookmark-box-shadow;
+  cursor: pointer;
+  opacity: .7;
+  overflow: hidden;
+  transition: opacity 0.3s;
+  z-index: $bookmark-z-index;
+}
+
+.bookmark:hover {
+  opacity: 1;
+
+  .bookmark__action { opacity: 1; }
+  .bookmark__details { opacity: 1; }
+}
+
+.bookmark__image {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  img {
+    height: auto;
+    min-height: 100%;
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+
+    border-radius: $bookmark-border-radius;
+  }
+}
+
+.bookmark__image.custom {
+  background-size: contain;
+  background-position: center;
+}
+
+
+// Bookmark details
+.bookmark__details {
+  height: $bookmark-details-height;
+  width: 100%;
+
+  position: absolute;
+  bottom: 0;
+
+  background: $bookmark-background;
+  border-bottom-left-radius: $bookmark-border-radius;
+  border-bottom-right-radius: $bookmark-border-radius;
+  border-top: $bookmark-details-border-top;
+  line-height: $bookmark-details-height;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+  z-index: $bookmark-details-z-index;
+}
+
+
+// Bookmark actions
+.bookmark__actions {
+  display: inline-block;
+  float: right;
+  z-index: $bookmark-menu-z-index;
+}
+
+.bookmark__action {
+  color: $bookmark-menu-color;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 16px;
+  opacity: 0;
+  transition: opacity .3s, color .3s;
+
+  &:hover,
+  &.active {
+    color: $brand-danger;
+    opacity: 1;
+  }
+}
+
+
+
+// Bookmark title
+.bookmark__title {
+  color: $bookmark-title-color;
+  display: inline-block;
+  font-size: $bookmark-title-font-size;
+  font-weight: 600;
+  margin-left: 10px;
+  max-width: 75%;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+// Folders
+.folder-list {
+  margin: 20px auto 10px auto;
+  min-width: 20em;
+  max-width: 30%;
+}
+
+
+// New entry
+.new-entry {
+  background-color: $bookmark-new-entry-background;
+  border-radius: $bookmark-border-radius;
+  cursor: pointer;
+  margin-left: $bookmark-margin - 5px;  // I don't know why this is needed
+}
+
+.new-entry__content {
+  color: $bookmark-new-entry-color;
+  text-align: center;
+
+  .fa {
+    display: block;
+    font-size: 5em;
+    height: 100%;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+  }
+}

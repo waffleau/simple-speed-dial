@@ -1,0 +1,33 @@
+<div class="bookmark" style="height: {{entryHeight}}px; width: {{entryWidth}}px">
+
+  <a class="bookmark__image" ng-href="{{bookmark.url}}">
+    <img ng-src="{{bookmark.image}}" ng-if="!bookmark.isFolder" />
+
+    <div class="folder__content" ng-if="bookmark.isFolder">
+      <i class="fa fa-folder"></i>
+    </div>
+  </a>
+
+  <div class="bookmark__details">
+    <a ng-hide="bookmark.isExpanded" ng-href="{{bookmark.url}}" class="bookmark__title">{{bookmark.title}}</a>
+
+    <span class="bookmark__actions">
+      <span class="bookmark__action" ng-show="bookmark.isExpanded" ng-click="bookmarks.editBookmark(bookmark)">
+        <i class="fa fa-edit"></i>
+      </span>
+
+      <span class="bookmark__action" ng-if="!bookmark.isFolder" ng-show="bookmark.isExpanded" ng-click="bookmarks.captureBookmark(bookmark)">
+        <i class="fa fa-refresh"></i>
+      </span>
+
+      <span class="bookmark__action" ng-show="bookmark.isExpanded" ng-click="bookmarks.removeBookmark(bookmark)">
+        <i class="fa fa-ban"></i>
+      </span>
+
+      <span class="bookmark__action" ng-click="bookmark.isExpanded = !bookmark.isExpanded" ng-class="{ 'active' : bookmark.isExpanded }">
+        <i class="fa" ng-class="{ 'fa-ellipsis-h' : bookmark.isExpanded, 'fa-ellipsis-v' : !bookmark.isExpanded }"></i>
+      </span>
+    </span>
+  </div>
+
+</div>

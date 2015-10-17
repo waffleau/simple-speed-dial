@@ -2,12 +2,14 @@
   "name": "simple-speed-dial",
   "version": "0.0.0",
   "dependencies": {
-    "angular" : "latest",
-    "angular-bootstrap" : "latest",
-    "bootstrap-sass" : "latest",
-    "font-awesome" : "latest",
-    "ngDialog" : "latest",
-    "underscore" : "latest"
+    "angular": "latest",
+    "angular-bootstrap": "latest",
+    "bootstrap-sass": "latest",
+    "font-awesome": "latest",
+    "ngDialog": "latest",
+    "underscore": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "appPath": "app",
+  "moduleName": "simpleSpeedDial"
 }

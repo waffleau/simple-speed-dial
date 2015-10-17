@@ -1,0 +1,26 @@
+// ==============================================================
+// Local variables
+// ==============================================================
+
+$font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$font-size-base: 19px;
+
+
+// ==============================================================
+// Styles
+// ==============================================================
+
+body {
+  background-color: #eee;
+  color: $grey-dark;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+a {
+  cursor: pointer;
+}
