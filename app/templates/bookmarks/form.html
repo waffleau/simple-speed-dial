@@ -1,32 +1,31 @@
 <div class="bookmark-form">
-    <h3>Bookmark / Folder</h3>
-    <div class="close-icon" ng-click="closeThisDialog(0)"<i class="fa fa-times"></i></div>
+  <h3>Bookmark / Folder</h3>
+  <div class="close-icon" ng-click="closeThisDialog(0)"<i class="fa fa-times"></i></div>
+
+  <br />
+
+  <form name="bookmarkForm" class="form-horizontal" role="form" novalidate>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Title</label>
+      <input type="text" class="col-sm-9 form-control" ng-model="bookmarkModel.title" placeholder="Enter Title" required />
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">URL</label>
+      <input type="url" class="col-sm-9 form-control" ng-model="bookmarkModel.url" placeholder="Enter URL" />
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Custom Icon</label>
+      <input type="url" class="col-sm-9 form-control" ng-model="bookmarkModel.customIcon" placeholder="Enter URL of custom icon / image" />
+    </div>
 
     <br />
 
-    <form name="bookmarkForm" class="form-horizontal" role="form" novalidate>
+    <div class="text-center">
+      <button class="btn btn-success" ng-click="saveBookmark()" ng-disabled="!bookmarkForm.$valid">Save Bookmark</button>
+    </div>
 
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Title</label>
-            <input type="text" class="col-sm-9 form-control" ng-model="bookmarkModel.title" placeholder="Enter Title" required />
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-3 control-label">URL</label>
-            <input type="url" class="col-sm-9 form-control" ng-model="bookmarkModel.url" placeholder="Enter URL" />
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Custom Icon</label>
-            <input type="url" class="col-sm-9 form-control" ng-model="bookmarkModel.customIcon" placeholder="Enter URL of custom icon / image" />
-        </div>
-
-        <br />
-
-        <div class="text-center">
-            <button class="btn btn-success" ng-click="saveBookmark()" ng-disabled="!bookmarkForm.$valid">Save Bookmark</button>
-        </div>
-
-    </form>
-
+  </form>
 </div>

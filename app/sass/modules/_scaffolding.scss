@@ -4,7 +4,7 @@
 
 $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif: Georgia, "Times New Roman", Times, serif;
-$font-size-base: 19px;
+$font-size-base: 16px;
 
 
 // ==============================================================
@@ -19,6 +19,8 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 1.4;
+  margin: 0;
+  padding: 0;
 }
 
 a {

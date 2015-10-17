@@ -49,7 +49,7 @@
         return Bookmark.deleteBookmark(bookmark).then(function(response) {
           if (response) {
             Storage.deleteCustomData(bookmark);
-            return self.bookmarks = _.reject(self.bookmarks, function(b) {
+            return bookmarks = _.reject(bookmarks, function(b) {
               return b.id === bookmark.id;
             });
           }
@@ -62,8 +62,8 @@
         var savedBookmark;
         if (response) {
           savedBookmark = Storage.loadBookmark(bookmark);
-          self.bookmarks.push(savedBookmark);
-          self.bookmarks = _.uniq(self.bookmarks, function(b) {
+          bookmarks.push(savedBookmark);
+          bookmarks = _.uniq(bookmarks, function(b) {
             return b.id;
           });
           return ngDialog.close();

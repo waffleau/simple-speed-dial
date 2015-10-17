@@ -12,6 +12,10 @@ $options-text-shadow: 0px 0px 10px rgba(53, 191, 255, 0.6);
 // Styles
 // ==============================================================
 
+.options {
+  margin-top: 40px;
+}
+
 .options-link {
   color: $options-color;
   font-size: $options-font-size;
@@ -48,5 +52,5 @@ $options-text-shadow: 0px 0px 10px rgba(53, 191, 255, 0.6);
   border-top: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  padding: 20px;
+  padding: 20px 40px;
 }

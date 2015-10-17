@@ -45,7 +45,7 @@ BookmarksCtrl = ($scope, ngDialog, Bookmark, Capture, Storage) ->
       Bookmark.deleteBookmark(bookmark).then (response) ->
         if response
           Storage.deleteCustomData(bookmark)
-          self.bookmarks = _.reject(self.bookmarks, (b) -> b.id == bookmark.id)
+          bookmarks = _.reject(bookmarks, (b) -> b.id == bookmark.id)
 
   self.saveBookmark = (bookmark) ->
     bookmark.parentId = self.folderId
@@ -54,8 +54,8 @@ BookmarksCtrl = ($scope, ngDialog, Bookmark, Capture, Storage) ->
       if response
         savedBookmark = Storage.loadBookmark(bookmark)
 
-        self.bookmarks.push(savedBookmark)
-        self.bookmarks = _.uniq(self.bookmarks, (b) -> b.id)
+        bookmarks.push(savedBookmark)
+        bookmarks = _.uniq(bookmarks, (b) -> b.id)
 
         ngDialog.close()
 

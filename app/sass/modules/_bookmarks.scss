@@ -16,9 +16,6 @@ $bookmark-title-font-size: 12px;
 
 $bookmark-menu-color: $grey-light;
 
-$bookmark-new-entry-background: $grey-light;
-$bookmark-new-entry-color: $grey-dark;
-
 
 // ==============================================================
 // Styles
@@ -143,7 +140,7 @@ $bookmark-new-entry-color: $grey-dark;
   vertical-align: top;
 
   &:hover,
-  &.active {
+  &.--active {
     color: $brand-danger;
     opacity: 1;
   }
@@ -162,25 +159,3 @@ $bookmark-new-entry-color: $grey-dark;
   max-width: 30%;
 }
 
-
-// New entry
-.new-entry {
-  background-color: $bookmark-new-entry-background;
-  border-radius: $bookmark-border-radius;
-  cursor: pointer;
-  margin-left: $bookmark-margin - 5px;  // I don't know why this is needed
-}
-
-.new-entry__content {
-  color: $bookmark-new-entry-color;
-  text-align: center;
-
-  .fa {
-    display: block;
-    font-size: 5em;
-    height: 100%;
-    position: absolute;
-    top: 25%;
-    width: 100%;
-  }
-}

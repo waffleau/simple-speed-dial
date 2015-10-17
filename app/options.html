@@ -18,15 +18,13 @@
 
 	<body ng-controller="OptionsCtrl as options" ng-style="{ 'background-color': options.getBackgroundColor() }">
 
-		<br />
-
-		<div class="col-sm-offset-2 col-sm-8" option-bindings>
+		<div class="options col-sm-offset-2 col-sm-8" option-bindings>
 
 			<form name="optionsForm" class="form-horizontal" role="form" novalidate>
 
-				<tabset justified="true">
+				<uib-tabset justified="true">
 
-					<tab heading="Basic options">
+					<uib-tab heading="Basic options">
 
 						<br />
 
@@ -124,9 +122,9 @@
 							<a href="index.html" class="btn btn-primary">Return to Dial</a>
 						</div>
 
-					</tab>
+					</uib-tab>
 
-					<tab heading="Advanced options">
+					<uib-tab heading="Advanced options">
 
 						<br />
 
@@ -152,9 +150,9 @@
 							<a href="index.html" class="btn btn-primary">Return to Dial</a>
 						</div>
 
-					</tab>
+					</uib-tab>
 
-				</tabset>
+				</uib-tabset>
 
 			</form>
 
@@ -162,7 +160,6 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>

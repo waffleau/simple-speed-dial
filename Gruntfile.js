@@ -239,7 +239,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/*.html'],
-        exclude: ['bootstrap-sass', 'angular-mocks'],
+        exclude: ['bootstrap-sass', 'angular-mocks', 'jquery'],
         ignorePath:  /\.\.\//
       },
       test: {

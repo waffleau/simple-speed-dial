@@ -28,7 +28,6 @@
         <dial-entry ng-repeat="bookmark in bookmarks.getBookmarks()"></dial-entry>
 
         <div class="bookmark new-entry" title="Add New" ng-show="true" style="height: {{entryHeight}}px; width: {{entryWidth}}px" ng-click="bookmarks.newBookmark()">
-          <div class="bookmark__overlay"></div>
           <span class="new-entry__content"><i class="fa fa-plus"></i></span>
         </div>
       </div>
@@ -40,7 +39,6 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>

@@ -1,3 +1,17 @@
+// ==============================================================
+// Local variables
+// ==============================================================
+
+$new-entry-background: $grey-light;
+$new-entry-color: $grey-dark;
+
+$new-entry-icon-size: 60px;
+
+
+// ==============================================================
+// Styles
+// ==============================================================
+
 .dial {
   margin: 0 auto;
   text-align: center;
@@ -6,4 +20,33 @@
 .dial__content {
   display: inline-block;
   text-align: left;
+}
+
+
+.new-entry {
+  background-color: $new-entry-background;
+  cursor: pointer;
+  left: -5px;  // I don't know why this is needed
+}
+
+.new-entry__content {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  color: $new-entry-color;
+  text-align: center;
+
+  .fa {
+    height: 100%;
+    width: 100%;
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    margin-top: -$new-entry-icon-size * 0.5 + 5px;
+
+    font-size: $new-entry-icon-size;
+  }
 }
