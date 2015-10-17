@@ -4,6 +4,10 @@ temp
 build
 dist
 .sass-cache
+bower_components
 app/bower_components
 test/bower_components
 package
+
+scripts/*.js
+styles/*.css

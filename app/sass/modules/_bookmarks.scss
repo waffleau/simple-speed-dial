@@ -45,8 +45,8 @@ $bookmark-new-entry-color: $grey-dark;
 .bookmark:hover {
   opacity: 1;
 
-  .bookmark__action { opacity: 1; }
   .bookmark__details { opacity: 1; }
+  .bookmark__toggle { opacity: 1; }
 }
 
 .bookmark__image {
@@ -73,7 +73,6 @@ $bookmark-new-entry-color: $grey-dark;
 }
 
 
-// Bookmark details
 .bookmark__details {
   height: $bookmark-details-height;
   width: 100%;
@@ -92,20 +91,53 @@ $bookmark-new-entry-color: $grey-dark;
 }
 
 
-// Bookmark actions
+.bookmark__title {
+  color: $bookmark-title-color;
+  display: inline-block;
+  font-size: $bookmark-title-font-size;
+  font-weight: 600;
+  margin-left: 10px;
+  max-width: 75%;
+  opacity: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity .3s;
+  white-space: nowrap;
+
+  &.--active {
+    opacity: 1;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
 .bookmark__actions {
   display: inline-block;
   float: right;
+  padding: 0 3px;
   z-index: $bookmark-menu-z-index;
 }
 
-.bookmark__action {
+.bookmark__actions.--active {
+  .bookmark__action {
+    opacity: 1;
+  }
+}
+
+.bookmark__toggle {
   color: $bookmark-menu-color;
   cursor: pointer;
   display: inline-block;
+  font-size: 16px;
   min-width: 16px;
   opacity: 0;
+  padding-left: 6px;
+  text-align: center;
   transition: opacity .3s, color .3s;
+  vertical-align: top;
 
   &:hover,
   &.active {
@@ -114,24 +146,9 @@ $bookmark-new-entry-color: $grey-dark;
   }
 }
 
-
-
-// Bookmark title
-.bookmark__title {
-  color: $bookmark-title-color;
-  display: inline-block;
-  font-size: $bookmark-title-font-size;
-  font-weight: 600;
-  margin-left: 10px;
-  max-width: 75%;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  &:hover {
-    text-decoration: none;
-  }
+.bookmark__action {
+  @extend .bookmark__toggle;
+  opacity: 0;
 }
 
 
